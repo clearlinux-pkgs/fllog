@@ -1,0 +1,7 @@
+1.2.6
+fltk-dev
+fontconfig-dev
+libXcursor-dev
+libXft-dev
+libjpeg-turbo-dev
+pkgconfig(x11)
