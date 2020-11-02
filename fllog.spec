@@ -4,7 +4,7 @@
 #
 Name     : fllog
 Version  : 1.2.6
-Release  : 1
+Release  : 2
 URL      : https://sourceforge.net/projects/fldigi/files/fllog/fllog-1.2.6.tar.gz
 Source0  : https://sourceforge.net/projects/fldigi/files/fllog/fllog-1.2.6.tar.gz
 Summary  : No detailed summary available
@@ -54,20 +54,21 @@ license components for the fllog package.
 
 %prep
 %setup -q -n fllog-1.2.6
+cd %{_builddir}/fllog-1.2.6
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1562608870
+export SOURCE_DATE_EPOCH=1604357225
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
@@ -77,13 +78,13 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1562608870
+export SOURCE_DATE_EPOCH=1604357225
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/fllog
-cp COPYING %{buildroot}/usr/share/package-licenses/fllog/COPYING
+cp %{_builddir}/fllog-1.2.6/COPYING %{buildroot}/usr/share/package-licenses/fllog/b47456e2c1f38c40346ff00db976a2badf36b5e3
 %make_install
 
 %files
@@ -100,4 +101,4 @@ cp COPYING %{buildroot}/usr/share/package-licenses/fllog/COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/fllog/COPYING
+/usr/share/package-licenses/fllog/b47456e2c1f38c40346ff00db976a2badf36b5e3
