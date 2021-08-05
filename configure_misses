@@ -1,1 +1,1 @@
-Configure miss: FLXMLRPC
+Configure miss: flxmlrpc >= 1.0.1
